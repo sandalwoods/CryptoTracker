@@ -1,15 +1,14 @@
 //
 //  CoinModel.swift
-//  SwiftuiCrypto
+//  SwiftfulCrypto
 //
-//  Created by kevin on 2022/10/16.
+//  Created by Nick Sarno on 5/8/21.
 //
 
 import Foundation
 
 // CoinGecko API info
 /*
- 
  URL: https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h
  
  JSON Response:
@@ -18,47 +17,51 @@ import Foundation
      "symbol": "btc",
      "name": "Bitcoin",
      "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
-     "current_price": 19136.15,
-     "market_cap": 367102010015,
+     "current_price": 58908,
+     "market_cap": 1100013258170,
      "market_cap_rank": 1,
-     "fully_diluted_valuation": 401918444037,
-     "total_volume": 12182175742,
-     "high_24h": 19181.07,
-     "low_24h": 19030.3,
-     "price_change_24h": 13.31,
-     "price_change_percentage_24h": 0.06958,
-     "market_cap_change_24h": 134312025,
-     "market_cap_change_percentage_24h": 0.0366,
-     "circulating_supply": 19180862,
+     "fully_diluted_valuation": 1235028318246,
+     "total_volume": 69075964521,
+     "high_24h": 59504,
+     "low_24h": 57672,
+     "price_change_24h": 808.94,
+     "price_change_percentage_24h": 1.39234,
+     "market_cap_change_24h": 13240944103,
+     "market_cap_change_percentage_24h": 1.21837,
+     "circulating_supply": 18704250,
      "total_supply": 21000000,
      "max_supply": 21000000,
-     "ath": 69045,
-     "ath_change_percentage": -72.28745,
-     "ath_date": "2021-11-10T14:24:11.849Z",
+     "ath": 64805,
+     "ath_change_percentage": -9.24909,
+     "ath_date": "2021-04-14T11:54:46.763Z",
      "atl": 67.81,
-     "atl_change_percentage": 28117.58607,
+     "atl_change_percentage": 86630.1867,
      "atl_date": "2013-07-06T00:00:00.000Z",
      "roi": null,
-     "last_updated": "2022-10-16T13:32:14.664Z",
+     "last_updated": "2021-05-09T04:06:09.766Z",
      "sparkline_in_7d": {
        "price": [
-         19476.83715483821,
-         19493.5919103997,
-         19129.923892576495
+         57812.96915967891,
+         57504.33531773738,
        ]
      },
-     "price_change_percentage_24h_in_currency": 0.06958234486623673
+     "price_change_percentage_24h_in_currency": 1.3923423473152687
    }
  
  */
+
+
+import Foundation
 
 
 struct CoinModel: Identifiable, Codable {
     let id, symbol, name: String
     let image: String
     let currentPrice: Double
-    let marketCap, marketCapRank, fullyDilutedValuation, totalVolume: Double?
-    let high24H, low24H, priceChange24H, priceChangePercentage24H: Double?
+    let marketCap, marketCapRank, fullyDilutedValuation: Double?
+    let totalVolume, high24H, low24H: Double?
+    let priceChange24H: Double?
+    let priceChangePercentage24H: Double?
     let marketCapChange24H: Double?
     let marketCapChangePercentage24H: Double?
     let circulatingSupply, totalSupply, maxSupply, ath: Double?
@@ -97,7 +100,6 @@ struct CoinModel: Identifiable, Codable {
         case sparklineIn7D = "sparkline_in_7d"
         case priceChangePercentage24HInCurrency = "price_change_percentage_24h_in_currency"
         case currentHoldings
-        
     }
     
     func updateHoldings(amount: Double) -> CoinModel {
@@ -111,9 +113,9 @@ struct CoinModel: Identifiable, Codable {
     var rank: Int {
         return Int(marketCapRank ?? 0)
     }
+    
 }
 
 struct SparklineIn7D: Codable {
     let price: [Double]?
 }
-
