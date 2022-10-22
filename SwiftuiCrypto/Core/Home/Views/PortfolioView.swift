@@ -14,6 +14,8 @@ struct PortfolioView: View {
     @State private var quantityText: String = ""
     @State private var showCheckmark: Bool = false
     
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -33,7 +35,13 @@ struct PortfolioView: View {
             .navigationTitle("Edit Portfolio")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    XMarkButton()
+//                    XMarkButton()  //doesn't work maybe can only dismiss in current view
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.headline)
+                    }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {

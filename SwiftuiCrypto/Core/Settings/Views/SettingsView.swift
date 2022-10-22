@@ -15,6 +15,8 @@ struct SettingsView: View {
     let coingeckoURL = URL(string: "https://www.coingecko.com")!
     let personalURL = URL(string: "https://www.google.com")!
     
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -41,8 +43,13 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    
-                    XMarkButton()
+//                    XMarkButton()
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.headline)
+                    }
                 }
             }
         }
