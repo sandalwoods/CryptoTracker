@@ -33,6 +33,7 @@ struct SettingsView: View {
                     applicationSection
                         .listRowBackground(Color.theme.background.opacity(0.5))
                 }
+                .scrollContentBackground(.hidden)
             }
             .font(.headline)
             .accentColor(.blue)
@@ -40,6 +41,7 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
+                    
                     XMarkButton()
                 }
             }

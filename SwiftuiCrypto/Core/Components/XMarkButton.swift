@@ -9,11 +9,12 @@ import SwiftUI
 
 struct XMarkButton: View {
     
-    @Environment(\.dismiss) private var dismiss
+//    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) private var dissmiss
     
     var body: some View {
         Button {
-            dismiss()
+            dissmiss.wrappedValue.dismiss()
         } label: {
             Image(systemName: "xmark")
                 .font(.headline)

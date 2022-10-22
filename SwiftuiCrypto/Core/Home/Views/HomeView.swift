@@ -58,6 +58,7 @@ struct HomeView: View {
             NavigationLink(destination: DetailLoadingView(coin: $selectedCoin), isActive: $showDetailView, label: {
                 EmptyView()
             })
+            
         )
     }
 }
@@ -114,6 +115,7 @@ extension HomeView {
                     .listRowBackground(Color.theme.background)
             }
         }
+        .scrollContentBackground(.hidden)
         .listStyle(PlainListStyle())
     }
     
@@ -128,6 +130,7 @@ extension HomeView {
                     .listRowBackground(Color.theme.background)
             }
         }
+        .scrollContentBackground(.hidden)
         .listStyle(PlainListStyle())
     }
     
